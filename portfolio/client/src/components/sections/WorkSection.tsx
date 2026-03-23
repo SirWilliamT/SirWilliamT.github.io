@@ -55,7 +55,7 @@ const projects = [
     ],
     tools: ["Unity", "C#", "Typescript", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Generative AI", "Meta Quest"],
     process:
-      "Stereoscopic Concert Experiences\nLed prototyping of a format that blends captured concert footage with a rendered virtual environment, optimizing stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.\n\nStereo Comfort Zones\nDeveloped a method for calculating safe audience positioning relative to stereoscopic content. Adopted as the standard for event arenas, including the arena used at Meta's flagship annual conference.\n\nSeating System Design\nDesigned and iterated on seating prototypes defining how users navigate, change, and leave seats. Directly informed product direction for the platform's seating experience. User studies confirmed half of attendees preferred to sit.\n\nImmersive 3D Cinema\nLed prototyping for VR cinema experiences, authoring a white paper on eye comfort for stereoscopic video and building a custom Unity stereo visualization tool. Resolved vertigo/comfort issues through iteration and explored themed environments for branded viewing experiences.\n\nContent Format Strategy & Mixed Media\nAnalyzed content formats (360°, 180° stereo, mixed) for virtual events, identifying depth-conflict challenges and influencing the team's approach to stereoscopic content. Contributed to \"better than live\" prototypes exploring mixed media beyond traditional formats.\n\nTooling, Quality & AI Workflows\nContributed reusable code, custom animation easings, UI toolkit upgrades, and documentation improvements — adopted across teams. Regularly dogfooded and filed bugs triaged into engineering tasks. Leveraged generative AI for 4× productivity gains in component development and 5× acceleration in visual asset production.\n\n",
+      "**Stereoscopic Concert Experiences**\nLed prototyping of a format that blends captured concert footage with a rendered virtual environment, optimizing stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.\n\n**Stereo Comfort Zones**\nDeveloped a method for calculating safe audience positioning relative to stereoscopic content. Adopted as the standard for event arenas, including the arena used at Meta's flagship annual conference.\n\n**Seating System Design**\nDesigned and iterated on seating prototypes defining how users navigate, change, and leave seats. Directly informed product direction for the platform's seating experience. User studies confirmed half of attendees preferred to sit.\n\n**Immersive 3D Cinema**\nLed prototyping for VR cinema experiences, authoring a white paper on eye comfort for stereoscopic video and building a custom Unity stereo visualization tool. Resolved vertigo/comfort issues through iteration and explored themed environments for branded viewing experiences.\n\n**Content Format Strategy & Mixed Media**\nAnalyzed content formats (360°, 180° stereo, mixed) for virtual events, identifying depth-conflict challenges and influencing the team's approach to stereoscopic content. Contributed to \"better than live\" prototypes exploring mixed media beyond traditional formats.\n\n**Tooling, Quality & AI Workflows**\nContributed reusable code, custom animation easings, UI toolkit upgrades, and documentation improvements — adopted across teams. Regularly dogfooded and filed bugs triaged into engineering tasks. Leveraged generative AI for 4× productivity gains in component development and 5× acceleration in visual asset production.\n\n",
   },
   {
     id: "proj1",
@@ -476,9 +476,20 @@ function WorkPanel({
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: t.textDim, marginBottom: "0.75rem" }}>
             How it was made
           </div>
-          <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.8, color: t.textSecondary }}>
-            {project.process}
-          </p>
+          <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.8, color: t.textSecondary }}>
+  {project.process.split(/\n\n+/).map((para, i) => (
+    <p key={i} style={{ marginBottom: "0.75rem" }}
+      dangerouslySetInnerHTML={{
+        __html: para
+          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\*(.+?)\*/g, "<em>$1</em>")
+          .replace(/\n/g, "  
+")
+      }}
+    />
+  ))}
+</div>
+
         </div>
 
         {/* Outcomes */}
