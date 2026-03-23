@@ -39,6 +39,7 @@ const FRAGMENT_SHADER = `
   uniform float u_time;
   uniform vec2  u_resolution;
   uniform vec2  u_mouse_norm; // -1..1 smoothed cursor
+  uniform float u_dark_mode;  // 1.0 = dark theme, 0.0 = light theme
 
   // ── Hash helpers ──────────────────────────────────────────────────────────
   float h1(float n) { return fract(sin(n * 127.1 + 311.7) * 43758.5453); }
@@ -46,13 +47,23 @@ const FRAGMENT_SHADER = `
   vec2  h2v(vec2 p) { return vec2(h2(p.x, p.y), h2(p.y + 3.1, p.x + 7.3)); }
 
   // ── Brand palette ─────────────────────────────────────────────────────────
-  // Mint #4DFFC3, Violet #7B61FF, Teal #0EADA0, Soft-white #C8F0FF
+  // Dark:  Mint #4DFFC3, Violet #7B61FF, Teal #0EADA0, Ice-blue #C8F0FF
+  // Light: deeper, higher-contrast equivalents for a pale background
   vec3 pulseColor(float seed) {
     float s = h1(seed);
-    if (s < 0.30) return vec3(0.302, 1.000, 0.765); // mint
-    if (s < 0.55) return vec3(0.482, 0.380, 1.000); // violet
-    if (s < 0.78) return vec3(0.055, 0.678, 0.627); // teal
-    return vec3(0.784, 0.941, 1.000);               // ice-blue
+    if (u_dark_mode > 0.5) {
+      // Dark theme — original bright palette
+      if (s < 0.30) return vec3(0.302, 1.000, 0.765); // mint
+      if (s < 0.55) return vec3(0.482, 0.380, 1.000); // violet
+      if (s < 0.78) return vec3(0.055, 0.678, 0.627); // teal
+      return vec3(0.784, 0.941, 1.000);               // ice-blue
+    } else {
+      // Light theme — blue-dominant palette so glows read as blue on white
+      if (s < 0.30) return vec3(0.050, 0.350, 0.900); // bright blue
+      if (s < 0.55) return vec3(0.200, 0.100, 0.850); // indigo
+      if (s < 0.78) return vec3(0.000, 0.500, 0.850); // sky blue
+      return vec3(0.100, 0.250, 0.780);               // deep blue
+    }
   }
 
   // ── Smooth value noise (for clouds + tendril warp) ────────────────────────
@@ -134,41 +145,56 @@ const FRAGMENT_SHADER = `
   }
 
   void main() {
+    // Standard aspect-correct UV: normalize by height so x scales with aspect.
+    // uv.x range: [-aspect..aspect], uv.y range: [-1..1] then shifted to [0..1]
+    float aspect = u_resolution.x / u_resolution.y;
+    // Simple 0..1 UV for background/clouds (no aspect correction needed there)
     vec2 uv = gl_FragCoord.xy / u_resolution.xy;
     uv.y = 1.0 - uv.y;
-
-    // Correct for aspect ratio so cells are square
-    float aspect = u_resolution.x / u_resolution.y;
-    vec2 uvA = vec2(uv.x * aspect, uv.y); // aspect-corrected space
+    // Aspect-corrected UV: x is in [0..aspect], y is in [0..1]
+    // This ensures the grid cells are always square regardless of canvas size.
+    vec2 uvA = vec2(uv.x * aspect, uv.y);
 
     float t = u_time;
 
-    // ── Background: deep navy gradient ────────────────────────────────────
-    vec3 col = mix(vec3(0.040, 0.025, 0.100), vec3(0.005, 0.008, 0.020), uv.y);
+    // ── Background: theme-aware gradient ─────────────────────────────────────────
+    vec3 col;
+    if (u_dark_mode > 0.5) {
+      // Dark theme: deep navy
+      col = mix(vec3(0.040, 0.025, 0.100), vec3(0.005, 0.008, 0.020), uv.y);
+    } else {
+      // Light theme: pure white
+      col = vec3(1.0, 1.0, 1.0);
+    }
 
-    // ── Clouds (subtle, behind web) ───────────────────────────────────────
+    // ── Clouds (subtle, behind web) ───────────────────────────────────────────────
     float cd = cloudDensity(uv, t);
-    col = mix(col, vec3(0.055, 0.035, 0.130), cd * 0.50);
+    if (u_dark_mode > 0.5) {
+      col = mix(col, vec3(0.055, 0.035, 0.130), cd * 0.50);
+    }
+    // Light theme: no clouds — keep background clean white
 
-    // ── Neural web grid ───────────────────────────────────────────────────
-    // Grid resolution: COLS x ROWS cells, each with one node
-    float COLS = 7.0;
+    // ── Neural web grid ────────────────────────────────────────────────────────────
+    // Grid resolution: COLS x ROWS cells, each with one node.
+    // We use uvA (aspect-corrected) so cells are always square.
+    // COLS is scaled by aspect so the grid always fills the full width.
     float ROWS = 5.0;
+    float COLS = ROWS * aspect; // always fills width with square cells
 
-    // Scale uvA into grid space
-    vec2 gridUV = vec2(uvA.x / aspect * COLS, uv.y * ROWS);
+    // Map uvA into grid space — uvA.x in [0..aspect], uvA.y in [0..1]
+    // Dividing by aspect gives [0..1] in x, then multiply by COLS.
+    vec2 gridUV  = vec2(uvA.x / aspect * COLS, uvA.y * ROWS);
     vec2 gridCell = floor(gridUV);
 
     // Accumulate tendril + pulse contributions from neighbouring cells
-    // We check a 3x3 neighbourhood around the current cell
     float webGlow   = 0.0;
     float pulseGlow = 0.0;
     vec3  pulseCol  = vec3(0.0);
     float nodeGlow  = 0.0;
     vec3  nodeCol   = vec3(0.0);
 
-    // Current pixel in grid-local coords
-    vec2 pGrid = vec2(uvA.x / aspect * COLS, uv.y * ROWS);
+    // Current pixel in grid-local coords (same space as gridUV)
+    vec2 pGrid = gridUV;
 
     // 3x3 neighbourhood is sufficient — nodes drift within their cell so
     // a connection from cellA can only reach ~1.5 cells away.
@@ -298,19 +324,44 @@ const FRAGMENT_SHADER = `
     nodeGlow  *= 1.0 + mouseInfluence * 2.5;
 
     // ── Composite ─────────────────────────────────────────────────────────
-    // Tendril base color: very dim mint/teal so they read as dark threads
-    vec3 webColor = vec3(0.10, 0.55, 0.50);
-    col += webColor  * clamp(webGlow,   0.0, 1.0) * 0.55;
+    // On a white background we SUBTRACT colour (darken) rather than ADD (lighten).
+    // This makes the tendrils/pulses/nodes appear as dark marks on white.
+    if (u_dark_mode > 0.5) {
+      // Dark theme — original additive compositing
+      vec3 webColor = vec3(0.10, 0.55, 0.50);
+      col += webColor * clamp(webGlow, 0.0, 1.0) * 0.55;
 
-    // Pulse beams: bright, colored
-    if (pulseGlow > 0.001) {
-      col += (pulseCol / (pulseGlow + 0.001)) * clamp(pulseGlow, 0.0, 3.0) * 0.90;
-    }
+      if (pulseGlow > 0.001) {
+        col += (pulseCol / (pulseGlow + 0.001)) * clamp(pulseGlow, 0.0, 3.0) * 0.90;
+      }
 
-    // Node glows: soft radial halos, colored by last arriving pulse
-    col += vec3(0.20, 0.80, 0.70) * clamp(nodeGlow, 0.0, 3.0) * 0.50;
-    if (nodeGlow > 0.001) {
-      col += (nodeCol / (nodeGlow + 0.001)) * clamp(nodeGlow, 0.0, 2.0) * 0.55;
+      vec3 nodeBaseColor = vec3(0.20, 0.80, 0.70);
+      col += nodeBaseColor * clamp(nodeGlow, 0.0, 3.0) * 0.50;
+      if (nodeGlow > 0.001) {
+        col += (nodeCol / (nodeGlow + 0.001)) * clamp(nodeGlow, 0.0, 2.0) * 0.55;
+      }
+    } else {
+      // Light theme — blend toward dark blue colours (mix toward target, not subtract)
+      // This preserves hue correctly on a white background.
+
+      // Tendrils: blend toward dark blue-teal
+      vec3 webTarget = vec3(0.05, 0.25, 0.75);
+      float webBlend = clamp(webGlow, 0.0, 1.0) * 0.65;
+      col = mix(col, webTarget, webBlend);
+
+      // Pulse beams: blend toward vivid blue pulse colour
+      if (pulseGlow > 0.001) {
+        vec3 pc = pulseCol / (pulseGlow + 0.001);
+        float pb = clamp(pulseGlow, 0.0, 3.0) * 0.55;
+        col = mix(col, pc, clamp(pb, 0.0, 0.92));
+      }
+
+      // Node halos: blend only using the pulse-coloured node colour (no grey base)
+      if (nodeGlow > 0.001) {
+        vec3 nc = nodeCol / (nodeGlow + 0.001);
+        float ncb = clamp(nodeGlow, 0.0, 2.0) * 0.70;
+        col = mix(col, nc, clamp(ncb, 0.0, 0.90));
+      }
     }
 
     // ── Vignette ──────────────────────────────────────────────────────────
@@ -327,13 +378,19 @@ const FRAGMENT_SHADER = `
 
 interface ShaderCanvasProps {
   className?: string;
+  isDark?: boolean;
 }
 
-export default function ShaderCanvas({ className = "" }: ShaderCanvasProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const rafRef    = useRef<number>(0);
-  const mouseRef  = useRef({ x: 0.0, y: 0.0 });
-  const smoothRef = useRef({ x: 0.0, y: 0.0 });
+export default function ShaderCanvas({ className = "", isDark = true }: ShaderCanvasProps) {
+  const canvasRef  = useRef<HTMLCanvasElement>(null);
+  const rafRef     = useRef<number>(0);
+  const mouseRef   = useRef({ x: 0.0, y: 0.0 });
+  const smoothRef  = useRef({ x: 0.0, y: 0.0 });
+  const sizeRef    = useRef({ w: 0, h: 0 });
+  const isDarkRef  = useRef(isDark);
+
+  // Keep the ref in sync with the prop so the render loop always reads the latest value
+  useEffect(() => { isDarkRef.current = isDark; }, [isDark]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -370,17 +427,27 @@ export default function ShaderCanvas({ className = "" }: ShaderCanvasProps) {
     const uTime       = gl.getUniformLocation(prog, "u_time");
     const uResolution = gl.getUniformLocation(prog, "u_resolution");
     const uMouse      = gl.getUniformLocation(prog, "u_mouse_norm");
+    const uDarkMode   = gl.getUniformLocation(prog, "u_dark_mode");
 
     // ── Resize ────────────────────────────────────────────────────────────
-    function resize() {
-      const dpr = Math.min(window.devicePixelRatio, 2);
-      canvas!.width  = canvas!.clientWidth  * dpr;
-      canvas!.height = canvas!.clientHeight * dpr;
-      gl!.viewport(0, 0, canvas!.width, canvas!.height);
+    // Measure the canvas's actual rendered CSS size every frame via
+    // getBoundingClientRect. This is the most reliable approach — it reads
+    // the true painted size regardless of how the resize was triggered
+    // (window resize, iframe viewport change, mobile preview toggle, etc.).
+    // No observers or event listeners needed.
+    function syncSize() {
+      const dpr  = Math.min(window.devicePixelRatio, 2);
+      const rect = canvas!.getBoundingClientRect();
+      const w    = Math.round(rect.width  * dpr);
+      const h    = Math.round(rect.height * dpr);
+      if (w > 0 && h > 0 && (w !== sizeRef.current.w || h !== sizeRef.current.h)) {
+        canvas!.width  = w;
+        canvas!.height = h;
+        gl!.viewport(0, 0, w, h);
+        sizeRef.current = { w, h };
+      }
     }
-    resize();
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
+    syncSize();
 
     // ── Mouse tracking ────────────────────────────────────────────────────
     function onMouseMove(e: MouseEvent) {
@@ -393,6 +460,9 @@ export default function ShaderCanvas({ className = "" }: ShaderCanvasProps) {
     // ── Render loop ───────────────────────────────────────────────────────
     const start = performance.now();
     function render() {
+      // Re-sync size every frame — catches any resize the observer may have missed
+      syncSize();
+
       const elapsed = (performance.now() - start) / 1000;
 
       // Smooth mouse
@@ -404,6 +474,7 @@ export default function ShaderCanvas({ className = "" }: ShaderCanvasProps) {
       gl!.uniform1f(uTime,       elapsed);
       gl!.uniform2f(uResolution, canvas!.width, canvas!.height);
       gl!.uniform2f(uMouse,      sm.x, sm.y);
+      gl!.uniform1f(uDarkMode,   isDarkRef.current ? 1.0 : 0.0);
       gl!.drawArrays(gl!.TRIANGLE_STRIP, 0, 4);
 
       rafRef.current = requestAnimationFrame(render);
@@ -412,7 +483,6 @@ export default function ShaderCanvas({ className = "" }: ShaderCanvasProps) {
 
     return () => {
       cancelAnimationFrame(rafRef.current);
-      ro.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);

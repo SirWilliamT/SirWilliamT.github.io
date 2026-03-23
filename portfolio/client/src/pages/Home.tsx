@@ -1,7 +1,7 @@
 /**
  * Home — "Liquid Precision" Design System
  * Main portfolio page assembling all sections.
- * Sections: Hero → About → Experience → Skills → Interests → Contact
+ * Sections: Hero → About → Work → Skills → Interests → Contact
  */
 
 import CustomCursor from "@/components/CustomCursor";
@@ -12,7 +12,7 @@ import MarqueeBanner from "@/components/MarqueeBanner";
 import SectionDivider from "@/components/SectionDivider";
 import AboutSection from "@/components/sections/AboutSection";
 import ContactSection from "@/components/sections/ContactSection";
-import ExperienceSection from "@/components/sections/ExperienceSection";
+import WorkSection from "@/components/sections/WorkSection";
 import HeroSection from "@/components/sections/HeroSection";
 import InterestsSection from "@/components/sections/InterestsSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -40,10 +40,10 @@ export default function Home() {
       <main>
         <HeroSection />
         <SectionDivider />
+        <WorkSection />
+        <SectionDivider />
         <AboutSection />
         <MarqueeBanner />
-        <ExperienceSection />
-        <SectionDivider />
         <SkillsSection />
         <SectionDivider />
         <InterestsSection />

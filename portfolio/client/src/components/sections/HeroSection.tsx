@@ -48,7 +48,7 @@ export default function HeroSection() {
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
       {/* WebGL Shader — always dark, full opacity */}
       <div className="absolute inset-0 z-0">
-        <ShaderCanvas className="w-full h-full" />
+        <ShaderCanvas className="w-full h-full" isDark={isDark} />
       </div>
 
       {/* Left-side text legibility gradient */}

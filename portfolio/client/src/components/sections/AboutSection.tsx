@@ -42,7 +42,7 @@ export default function AboutSection() {
 
       {/* Section number watermark */}
       <span className="section-number" style={{ right: "-2rem", top: "2rem", color: t.sectionNumber }}>
-        01
+        03
       </span>
 
       <div className="container">

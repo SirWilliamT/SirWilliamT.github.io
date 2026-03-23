@@ -10,8 +10,8 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useTokens } from "@/lib/theme-tokens";
 
 const NAV_LINKS = [
+  { label: "Work", href: "#experience" },
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Interests", href: "#interests" },
   { label: "Contact", href: "#contact" },
