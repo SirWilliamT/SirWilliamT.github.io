@@ -27,11 +27,11 @@ import { useTokens } from "@/lib/theme-tokens";
 const projects = [
   {
     id: "proj2",
-    title: "Kinetic Brand Installation",
-    outcome: "Live interactive installation for 4,000+ attendees at a flagship brand event",
+    title: "Horizon Events",
+    outcome: "Steered layout for optimal viewing for multiple video formats, seating methods, and ",
     tags: ["Physical Computing", "Real-time Graphics", "TouchDesigner"],
-    context: { company: "Nexus Interactive", role: "Creative Technologist", period: "2021" },
-    type: "Installation",
+    context: { company: "Meta", role: "Product Design Prototyper", period: "2024-2026" },
+    type: "Product",
     color: "oklch(0.62 0.22 285)", // violet
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
@@ -44,7 +44,7 @@ const projects = [
       "Featured in three industry publications covering experiential design",
       "Client commissioned a second, larger installation for the following year",
     ],
-    tools: ["TouchDesigner", "Intel RealSense", "Arduino", "LED Controllers", "Notch"],
+    tools: ["Unity", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Devmate", "Claude Opus", "Metamate"],
     process:
       "Prototyped the depth-tracking pipeline in two weeks using a single RealSense unit. Scaled to a 4-camera array for full-width coverage. Built a custom OSC bridge between TouchDesigner and the LED controller firmware.",
   },

@@ -86,7 +86,7 @@ export default function HeroSection() {
               marginBottom: "0.15em",
             }}
           >
-            William
+            William Tian
           </motion.h1>
 
           {/* Tagline */}
