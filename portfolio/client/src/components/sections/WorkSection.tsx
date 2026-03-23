@@ -477,19 +477,17 @@ function WorkPanel({
             How it was made
           </div>
           <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.8, color: t.textSecondary }}>
-  {project.process.split(/\n\n+/).map((para, i) => (
-    <p key={i} style={{ marginBottom: "0.75rem" }}
-      dangerouslySetInnerHTML={{
-        __html: para
-          .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-          .replace(/\*(.+?)\*/g, "<em>$1</em>")
-          .replace(/\n/g, "  
-")
-      }}
-    />
-  ))}
-</div>
-
+            {project.process.split(/\n\n+/).map((para, i) => (
+              <p key={i} style={{ marginBottom: "0.75rem" }}
+                dangerouslySetInnerHTML={{
+                  __html: para
+                    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+                    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+                    .replace(/\n/g, "<br/>")
+                }}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Outcomes */}
