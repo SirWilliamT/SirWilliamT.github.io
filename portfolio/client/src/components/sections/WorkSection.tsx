@@ -28,8 +28,8 @@ const projects = [
   {
     id: "proj2",
     title: "Horizon Events",
-    outcome: "Steered layout for optimal viewing for multiple video formats, seating methods, and ",
-    tags: ["Physical Computing", "Real-time Graphics", "TouchDesigner"],
+    outcome: "Defined the stereoscopic viewing standards, seating systems, and immersive content formats that shaped how audiences experience large-scale virtual events on Meta's Horizon platform.",
+    tags: ["Product Design Prototyping", "Spatial/3D UX Design", "Stereoscopic Video & Cinematography", "Human Factors / Visual Comfort Research", "Interaction Design", "User Research & Usability Testing", "Technical Writing", "Content Strategy", "Quality Assurance / Dogfooding"],
     context: { company: "Meta", role: "Product Design Prototyper", period: "2024-2026" },
     type: "Product",
     color: "oklch(0.62 0.22 285)", // violet
@@ -38,15 +38,24 @@ const projects = [
     mediaUrl: null as string | null,
     mediaType: "image" as "image" | "video",
     description:
-      "End-to-end technical lead on a 6m × 3m reactive LED wall installation for a Fortune 500 brand activation. Depth-camera input drove real-time generative visuals that responded to crowd movement, creating a shared physical-digital experience.",
+      "Led prototyping of a format that blends captured concert footage with a rendered virtual environment, optimising stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.",
     outcomes: [
-      "4,000+ attendees interacted with the installation over two event days",
-      "Featured in three industry publications covering experiential design",
-      "Client commissioned a second, larger installation for the following year",
+      "Stereoscopic concert guidelines became the reference for external production partners",
+      "Stereo comfort zone method adopted as the standard for event arenas, including Meta's flagship conference arena",
+      "Seating prototypes directly informed product direction for the platform's seating experience",
+	  "User studies confirmed 50% of attendees preferred to sit, validating the seating system investment",
+	  "White paper on eye comfort for stereoscopic video established the design framework for future 3D cinema projects",
+	  "Custom Unity stereo visualisation tool enabled designers and engineers to reason about depth in real time",
+	  "Themed cinema explorations demonstrated potential for branded, narrative-driven viewing experiences",
+	  "Content format analysis influenced the team's approach to stereoscopic content and raised awareness of depth-conflict constraints",
+	  "\"Better than live\" prototypes expanded the content delivery vision beyond traditional formats",
+	  "Reusable code, easings library, and UI toolkit upgrades adopted across teams, boosting cross-functional velocity",
+	  "Bug reports from dogfooding triaged into engineering tasks and tracked to resolution",
+	  "AI-augmented workflows achieved 4× productivity gains in component development",
     ],
-    tools: ["Unity", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Devmate", "Claude Opus", "Metamate"],
+    tools: ["Unity", "C#", "Typescript", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Generative AI", "Meta Quest"],
     process:
-      "Prototyped the depth-tracking pipeline in two weeks using a single RealSense unit. Scaled to a 4-camera array for full-width coverage. Built a custom OSC bridge between TouchDesigner and the LED controller firmware.",
+      "Stereoscopic Concert Experiences\nLed prototyping of a format that blends captured concert footage with a rendered virtual environment, optimizing stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.\n\nStereo Comfort Zones\nDeveloped a method for calculating safe audience positioning relative to stereoscopic content. Adopted as the standard for event arenas, including the arena used at Meta's flagship annual conference.\n\nSeating System Design\nDesigned and iterated on seating prototypes defining how users navigate, change, and leave seats. Directly informed product direction for the platform's seating experience. User studies confirmed half of attendees preferred to sit.\n\nImmersive 3D Cinema\nLed prototyping for VR cinema experiences, authoring a white paper on eye comfort for stereoscopic video and building a custom Unity stereo visualization tool. Resolved vertigo/comfort issues through iteration and explored themed environments for branded viewing experiences.\n\nContent Format Strategy & Mixed Media\nAnalyzed content formats (360°, 180° stereo, mixed) for virtual events, identifying depth-conflict challenges and influencing the team's approach to stereoscopic content. Contributed to \"better than live\" prototypes exploring mixed media beyond traditional formats.\n\nTooling, Quality & AI Workflows\nContributed reusable code, custom animation easings, UI toolkit upgrades, and documentation improvements — adopted across teams. Regularly dogfooded and filed bugs triaged into engineering tasks. Leveraged generative AI for 4× productivity gains in component development and 5× acceleration in visual asset production.\n\n",
   },
   {
     id: "proj1",
