@@ -36,7 +36,7 @@ const projects = [
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
     mediaUrl: "/media/events_cp_original.mp4",
-    mediaType: "image" as "image" | "video",
+    mediaType: "video" as "image" | "video",
     description:
       "Led prototyping of a format that blends captured concert footage with a rendered virtual environment, optimising stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.",
     outcomes: [
