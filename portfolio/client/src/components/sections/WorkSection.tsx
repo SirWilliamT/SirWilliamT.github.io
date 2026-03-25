@@ -53,7 +53,7 @@ const projects = [
 	  "Bug reports from dogfooding triaged into engineering tasks and tracked to resolution",
 	  "AI-augmented workflows achieved 4× productivity gains in component development",
     ],
-    tools: ["Unity", "C#", "Typescript", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Generative AI", "Meta Quest"],
+    tools: ["Unity", "C#", "Typescript", "THREE.js", "React", "Horizon Studio", "Blender", "Gimp", "VS Code", "Generative AI", "Meta Quest", "Shader Toy", "Graph Toy"],
     process:
       "**Stereoscopic Concert Experiences**\nLed prototyping of a format that blends captured concert footage with a rendered virtual environment, optimizing stereo comfort, seating layouts, and camera positioning. The resulting guidelines became the reference for external production partners. I also developed a crowd-masking technique using animated virtual characters to reduce depth artefacts in captured footage.\n\n**Stereo Comfort Zones**\nDeveloped a method for calculating safe audience positioning relative to stereoscopic content. Adopted as the standard for event arenas, including the arena used at Meta's flagship annual conference.\n\n**Seating System Design**\nDesigned and iterated on seating prototypes defining how users navigate, change, and leave seats. Directly informed product direction for the platform's seating experience. User studies confirmed half of attendees preferred to sit.\n\n**Immersive 3D Cinema**\nLed prototyping for VR cinema experiences, authoring a white paper on eye comfort for stereoscopic video and building a custom Unity stereo visualization tool. Resolved vertigo/comfort issues through iteration and explored themed environments for branded viewing experiences.\n\n**Content Format Strategy & Mixed Media**\nAnalyzed content formats (360°, 180° stereo, mixed) for virtual events, identifying depth-conflict challenges and influencing the team's approach to stereoscopic content. Contributed to \"better than live\" prototypes exploring mixed media beyond traditional formats.\n\n**Tooling, Quality & AI Workflows**\nContributed reusable code, custom animation easings, UI toolkit upgrades, and documentation improvements — adopted across teams. Regularly dogfooded and filed bugs triaged into engineering tasks. Leveraged generative AI for 4× productivity gains in component development and 5× acceleration in visual asset production.",
   },
@@ -85,12 +85,12 @@ const projects = [
     id: "proj_sparkar",
     title: "Spark AR",
     outcome: "Built and shipped AR prototypes used in external research studies that directly informed product direction for mobile clothing try-on, while creating reusable tools, frameworks, and documentation adopted across the AR design organization.",
-    tags: ["XR / AR", "Spatial Design", "Unity"],
-    context: { company: "Meta", role: "Product Design Prototyper", period: "2021-2022" },
+    tags: ["XR / AR", "Spark AR", "AR Body Scanning", "Product Design Prototyping"],
+    context: { company: "Facebook", role: "Product Design Prototyper", period: "2021-2022" },
     type: "Product",
     color: "oklch(0.75 0.15 200)", // teal
     featured: false,
-    mediaUrl: null as string | null,
+    mediaUrl: "/media/SparkAR_placeholder.png",
     mediaType: "image" as "image" | "video",
     description:
       "As a Product Design Prototyper on the AR Commerce team, I led the creation of interactive prototypes for mobile AR clothing try-on experiences — including body scanning, avatar creation, and garment visualization — that were used in external user research studies to validate and shape product direction. I developed reusable frameworks, components, and documentation that improved prototyping efficiency across the AR design organization, while also conducting competitive analysis and exploring how AR commerce could evolve onto future mixed reality hardware. Through cross-functional collaboration spanning design, research, product, and engineering, I ensured prototypes were tightly aligned with team goals and maintained continuity of prototyping support through team transitions.",
@@ -110,34 +110,36 @@ const projects = [
   },
   {
     id: "proj_semg",
-    title: "Generative Identity System",
-    outcome: "Algorithmic brand identity with 10,000+ unique asset variations",
-    tags: ["Generative Design", "Creative Coding", "Branding"],
-    context: { company: "Nexus Interactive", role: "Creative Technologist", period: "2020" },
-    type: "Creative",
+    title: "sEMG Wristband & Haptics Design Research & Prototyping",
+    outcome: "Led the design and development of a modular prototyping platform and wrist interaction research for Meta's sEMG wristband program — enabling rapid exploration of haptic feedback, novel input modalities, and social communication that supported Meta's publicly shared sEMG research program.",
+    tags: ["sEMG", "Haptics", "Creative Technologist", "Reality Labs Research", "Wristband"],
+    context: { company: "Facebook", role: "Creative Technologist", period: "2020" },
+    type: "Research",
     color: "oklch(0.70 0.20 330)", // rose
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
     mediaUrl: null as string | null,
     mediaType: "video" as "image" | "video",
     description:
-      "Developed a generative visual identity system for a music festival brand. A custom Processing sketch produced thousands of unique poster, social, and merchandise variations from a single parametric source — all on-brand, none identical.",
+      "As a Product Design Prototyper on Meta's wrist-based neural interface design research team, I built prototyping tools, interaction prototypes, and design research artifacts that supported the development of a surface electromyography (sEMG) wristband — a non-invasive device that detects electrical signals from motor nerves at the wrist to enable gesture-based control of AR glasses. This research is described in a [public white paper](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2Fen-gb%2Fblog%2Fsurface-emg-wrist-white-paper-reality-labs%2F&h=AT4VAJXYTwmhwXhHT-WnQiqPj8hrvro7j87qcIPfxHXouEd1KgwL5L5HfSQ3VciL2q77uvyMbzW3-3ySw-ctBoqOQ6zkY1sqESawmgsgvcUI5LM5Dye3pWZMspecDHOxT-FlE6qjnGCVWQ) by Meta.",
     outcomes: [
-      "10,000+ unique asset variations generated from a single parametric source",
-      "Eliminated 80% of manual asset production time for the client's marketing team",
-      "Identity system won a regional design award for innovation in brand systems",
+      "Built the team's primary rapid prototyping firmware platform for wrist-based interaction — adopted across the design research organization.",
+      "Eliminated per-prototype firmware rewrites with an extensible plug-and-play communication protocol.",
+      "Enabled wireless, no-solder prototyping that lowered the barrier for the full team to build and test wrist interactions.",
+	  "Explored haptic interactions and input modalities using a programmable haptic research wristband",
+	  "Prototyped MR watch, media player haptics, and social haptic experiences",
     ],
-    tools: ["Processing", "p5.js", "Figma", "After Effects", "Python"],
+    tools: ["Arduino IDE", "Unity", "C#", "C", "HoloLens"],
     process:
-      "Defined the brand's visual grammar as a set of constrained parameters (palette, geometry, rhythm). Built a Processing sketch exposing those parameters as sliders. Delivered the sketch alongside a style guide so the client's team could generate assets independently.",
+      "**Rapid Prototyping Platform**\nDesigned and built a modular hardware/software ecosystem that enabled the team to rapidly prototype wrist-based interactions. This included a custom BLE communication protocol with firmware and a Unity SDK for low-power microcontrollers, and a self-contained wristband prototyping kit with silicone bands and snap-on component mounts. The system used off-the-shelf I2C sensors in a no-solder, plug-and-play configuration, eliminating the need to rewrite firmware for each new sensor arrangement.\n\n**Haptic Interaction & Input Modality Exploration**\nBuilt prototypes using a programmable haptic research wristband to explore haptic interactions and novel input modalities — investigating how tactile feedback at the wrist could support or enhance user input for AR/VR.\n\n**Mixed-Reality Watch & Social Haptics Prototyping**\nPrototyped mixed-reality watch and media player haptic interactions, as well as social haptic experiences, as part of the team's wrist interaction design research.\n\n**Reusable Tools & Documentation**\nCreated reusable code libraries, a protocol specification, a Unity SDK, and comprehensive onboarding documentation. Assembled and distributed prototyping kits across the team to standardize tooling.\n\n",
   },
   {
-    id: "proj4",
+    id: "proj_strivr",
     title: "IoT Device Companion App",
     outcome: "0→1 product shipped; 2,400 units sold in first quarter",
     tags: ["Product Design", "Embedded", "Mobile"],
-    context: { company: "Freelance", role: "Independent Prototyper", period: "2019" },
-    type: "Product",
+    context: { company: "STRIVR", role: "VR Developer", period: "2019" },
+    type: "Research",
     color: "oklch(0.78 0.12 45)", // amber
     featured: false,
     mediaUrl: null as string | null,
@@ -149,16 +151,16 @@ const projects = [
       "2,400 units sold in the first quarter post-launch",
       "App store rating of 4.6 / 5 at launch based on beta-tester feedback",
     ],
-    tools: ["Figma", "React Native", "Arduino", "Bluetooth LE", "Expo"],
+    tools: ["HoloLens", "Unity", "Tobii Eye Tracker", "Leap Motion controller"],
     process:
       "Ran a 3-day design sprint with the founding team to align on core use cases. Built a clickthrough prototype in Figma for investor demos. Simultaneously developed a functional BLE-connected prototype on Arduino to validate the hardware UX.",
   },
   {
-    id: "proj6",
+    id: "proj_msdaimler",
     title: "Rapid Prototyping Workflow",
     outcome: "Studio-wide process that cut concept-to-demo time by 40%",
     tags: ["Process Design", "Tooling", "Figma"],
-    context: { company: "Acme Design Studio", role: "Senior Prototyper", period: "2022" },
+    context: { company: "Microsoft", role: "Senior Software Engineer", period: "2018-2019" },
     type: "Process",
     color: "oklch(0.82 0.10 120)", // lime
     featured: false,
@@ -171,7 +173,7 @@ const projects = [
       "Shared Figma library adopted by 3 product teams within 6 weeks",
       "Onboarding time for new prototypers reduced from 2 weeks to 3 days",
     ],
-    tools: ["Figma", "Notion", "Loom", "GitHub", "Storybook"],
+    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp", "Shader Toy", "Graph Toy"],
     process:
       "Ran a retrospective across 6 recent projects to identify recurring friction points. Mapped the full prototyping lifecycle and defined four fidelity tiers with clear entry/exit criteria. Piloted the workflow on two live projects before rolling out studio-wide.",
   },
@@ -490,6 +492,7 @@ function WorkPanel({
                   __html: para
                     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
                     .replace(/\*(.+?)\*/g, "<em>$1</em>")
+					.replace(/\[(.+?)\]\((https?:\/\/[^\ )]+)\)/g, "<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"text-decoration:underline;opacity:0.8;\">$1</a>")
                     .replace(/\n/g, "<br/>")
                 }}
               />
