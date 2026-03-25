@@ -486,7 +486,6 @@ function WorkPanel({
 
         {/* Description */}
         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9375rem", lineHeight: 1.8, color: t.textSecondary, marginBottom: "2rem" }} dangerouslySetInnerHTML={{ __html: renderMarkdown(project.description) }}>
-          {project.description}
         </p>
 
         {/* Process */}
