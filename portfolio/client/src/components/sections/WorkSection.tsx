@@ -22,6 +22,16 @@ import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useTokens } from "@/lib/theme-tokens";
 
+function renderMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/\[(.+?)\]\((https?:\/\/[^\ )]+)\)/g, "<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"text-decoration:underline;opacity:0.8;\">$1</a>")
+    .replace(/!\[([^\]]*)\]\((https?:\/\/[^\ )]+)\)/g, "<img src=\"$2\" alt=\"$1\" style=\"max-width:100%;border-radius:4px;margin:0.5rem 0;display:block;\" />")
+    .replace(/\n/g, "  
+");
+}
+
 // ─── Data ────────────────────────────────────────────────────────────────────
 
 const projects = [
@@ -476,7 +486,7 @@ function WorkPanel({
         <div style={{ height: "1px", background: t.borderSubtle, marginBottom: "2rem" }} />
 
         {/* Description */}
-        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9375rem", lineHeight: 1.8, color: t.textSecondary, marginBottom: "2rem" }}>
+        <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9375rem", lineHeight: 1.8, color: t.textSecondary, marginBottom: "2rem" }} dangerouslySetInnerHTML={{ __html: renderMarkdown(project.description) }}>
           {project.description}
         </p>
 
@@ -488,13 +498,7 @@ function WorkPanel({
           <div style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.8, color: t.textSecondary }}>
             {project.process.split(/\n\n+/).map((para, i) => (
               <p key={i} style={{ marginBottom: "0.75rem" }}
-                dangerouslySetInnerHTML={{
-                  __html: para
-                    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-                    .replace(/\*(.+?)\*/g, "<em>$1</em>")
-					.replace(/\[(.+?)\]\((https?:\/\/[^\ )]+)\)/g, "<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"text-decoration:underline;opacity:0.8;\">$1</a>")
-                    .replace(/\n/g, "<br/>")
-                }}
+                dangerouslySetInnerHTML={{ __html: renderMarkdown(para) }}
               />
             ))}
           </div>
