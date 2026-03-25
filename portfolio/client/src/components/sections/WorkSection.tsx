@@ -29,7 +29,6 @@ function renderMarkdown(text: string): string {
     .replace(/\[(.+?)\]\((https?:\/\/[^\ )]+)\)/g, "<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"text-decoration:underline;opacity:0.8;\">$1</a>")
     .replace(/!\[([^\]]*)\]\((https?:\/\/[^\ )]+)\)/g, "<img src=\"$2\" alt=\"$1\" style=\"max-width:100%;border-radius:4px;margin:0.5rem 0;display:block;\" />")
     .replace(/\n/g, "<br/>")  
-");
 }
 
 // ─── Data ────────────────────────────────────────────────────────────────────
