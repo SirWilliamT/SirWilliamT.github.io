@@ -84,7 +84,7 @@ const projects = [
   {
     id: "proj_sparkar",
     title: "Spark AR",
-    outcome: "Reusable component library now used across 5 internal XR projects",
+    outcome: "Built and shipped AR prototypes used in external research studies that directly informed product direction for mobile clothing try-on, while creating reusable tools, frameworks, and documentation adopted across the AR design organization.",
     tags: ["XR / AR", "Spatial Design", "Unity"],
     context: { company: "Meta", role: "Product Design Prototyper", period: "2021-2022" },
     type: "Product",
@@ -93,15 +93,20 @@ const projects = [
     mediaUrl: null as string | null,
     mediaType: "image" as "image" | "video",
     description:
-      "Designed and prototyped a spatial UI component library for mixed-reality headsets. Addressed legibility, depth cuing, and hand-tracking affordances — problems that standard 2D design systems don't solve.",
+      "As a Product Design Prototyper on the AR Commerce team, I led the creation of interactive prototypes for mobile AR clothing try-on experiences — including body scanning, avatar creation, and garment visualization — that were used in external user research studies to validate and shape product direction. I developed reusable frameworks, components, and documentation that improved prototyping efficiency across the AR design organization, while also conducting competitive analysis and exploring how AR commerce could evolve onto future mixed reality hardware. Through cross-functional collaboration spanning design, research, product, and engineering, I ensured prototypes were tightly aligned with team goals and maintained continuity of prototyping support through team transitions.",
     outcomes: [
-      "Library adopted across 5 active XR projects within the studio",
-      "Halved the time to scaffold a new XR prototype from ~3 days to ~1.5 days",
-      "Published as an internal design-system package with versioned releases",
+      "Prototype used in external user research studies, directly comparing our experience against third-party solutions and informing product direction.",
+      "Prototypes supported internal testing cycles that validated the core try-on concept.",
+      "Work informed brand partnerships on incorporating branded elements into the experience",
+	  "Established a reusable Unity methodology for building mobile AR prototypes for external research.",
+	  "Created reusable AR components (color blending, color temperature) adopted by other prototypers.",
+	  "Tool advocacy led to platform fixes and roadmap changes by the engineering team.",
+	  "Early MR exploration helped the team think beyond mobile toward next-generation AR commerce.",
+	  "Cross-functional alignment ensured prototypes were tightly coupled to design, research, and engineering goals.",
     ],
-    tools: ["Unity", "MRTK", "Figma", "C#", "Meta Quest SDK"],
+    tools: ["Unity", "Figma", "C#", "Orgami", "Spark AR", "React", "VS Pro", "Blender", "Gimp"],
     process:
-      "Audited 12 existing XR prototypes to extract recurring UI patterns. Defined a spatial token system (depth, scale, opacity) analogous to a 2D design token set. Built each component with configurable hand-tracking and gaze-dwell interaction modes.",
+      "**AR Clothing Try-On Prototypes**\nLed prototyping for a mobile AR clothing try-on experience on a major social media platform. Built an end-to-end body scanning and avatar creation prototype using Origami Studio, Spark AR Studio, Figma, Blender, and GIMP — overcoming significant toolchain limitations through creative workarounds. Served as prototyping lead across multiple workstreams, supporting internal testing cycles and helping the team iterate on garment visualization, entry points, and interaction flows.\n\n**Prototyping Frameworks, Tools & Knowledge Sharing**\nDeveloped a Unity-based mobile prototyping framework for remote user research, filling a gap where existing tools couldn't handle complex AR interactions like plane detection and 3D physics. Created reusable AR components adopted by other prototypers, and authored comprehensive Origami Studio best practices — covering multi-resolution support, real-device testing, reusable components, and performance optimization — that were shared across the AR design community. Proactively identified toolchain gaps and advocated for platform improvements including plane detection support and better AR authoring tool integration.\n\n**Research & Cross-Functional Leadership**\nConducted hands-on evaluations of third-party avatar and clothing try-on platforms to benchmark our approach against the competitive landscape. Explored how AR commerce could evolve beyond mobile onto future AR glasses hardware. Collaborated across design, UX research, product, AR technology, and creative engineering, and ensured smooth continuity of prototyping support through team transitions.",
   },
   {
     id: "proj_semg",
