@@ -394,7 +394,7 @@ function WorkPanel({
         </button>
 
         {/* Media in panel (featured projects only) */}
-        {project.featured && project.mediaUrl && (
+        {project.mediaUrl && (
           <div style={{ marginBottom: "2rem", marginTop: "0.5rem", borderRadius: "2px", overflow: "hidden" }}>
             {project.mediaType === "video" ? (
               <video
@@ -605,8 +605,8 @@ function WorkCard({
         }}
       />
 
-      {/* Media block — only on featured cards */}
-      {project.featured && (
+      {/* Media block — shown on any card with a mediaUrl */}
+      {project.mediaUrl && (
         <MediaBlock project={project} hovered={hovered} />
       )}
 
