@@ -127,7 +127,7 @@ const projects = [
     context: { company: "Facebook", role: "Creative Technologist", period: "2020" },
     type: "Research",
     color: "rose", // rose
-    featured: true,
+    featured: false,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
     mediaUrl: "/media/meta_semg_hands.jpg",
     mediaType: "image" as "image" | "video",
@@ -161,31 +161,30 @@ const projects = [
       "Demonstrated pratical use cases for eye tracking for integration into STRIVR's enterprise training platform",
       "Designed hand-tracking interactions for VR training scenarios, showcasing potential for more natural and intuitive user interfaces",
     ],
-    tools: ["HoloLens", "Unity", "Tobii Eye Tracker", "Leap Motion controller", "Valve Index", "Pico", "Blender", "Gimp", "VS Pro"],
+    tools: ["HoloLens", "Unity", "Tobii Eye Tracker", "Leap Motion controller", "HTC Vive", "Pico", "Blender", "Gimp", "VS Pro"],
     process:
-      "**Eye Tracking**\nInstalled a Tobii eye tracker on a Valve Index to build eye-tracking prototypes..\n\n**Hand Tracking**\nUsed a Leap Motion controller to prototype hand tracking interactions on both PC VR and standalone VR hardware. Developed a generic interface for hand tracking to work across hand tracking implementations.\n\n**Immersive Training Prototypes**\nBuilt prototypes for soft skills training and virtual on-site training scenarios, demonstrating the potential of VR for enterprise training applications.",
+      "**Eye Tracking**\nInstalled a Tobii eye tracker on a HTC Vive to build eye-tracking prototypes..\n\n**Hand Tracking**\nUsed a Leap Motion controller to prototype hand tracking interactions on both PC VR and standalone VR hardware. Developed a generic interface for hand tracking to work across hand tracking implementations.\n\n**Immersive Training Prototypes**\nBuilt prototypes for soft skills training and virtual on-site training scenarios, demonstrating the potential of VR for enterprise training applications.",
   },
   {
     id: "proj_msdaimler",
-    title: "Rapid Prototyping Workflow",
-    outcome: "Studio-wide process that cut concept-to-demo time by 40%",
-    tags: ["Process Design", "Tooling", "Figma"],
+    title: "MR Brake Replacement and Storage Accessory Prototype",
+    outcome: "Delivered a concept MR app for Daimler's (now Mercedes-Benz Group AG) E-class Mercedes featuring break replacement process visualization and a car roof storage accessory visualization which was used in a trade show booth to demonstrate the potential of MR for automotive maintenance and accessory visualization.",
+    tags: ["Prototyping", "Mixed Reality", "Automotive", "MR Concept Development", "MR training", "HoloLens"],
     context: { company: "Microsoft", role: "Senior Software Engineer", period: "2018-2019" },
-    type: "Process",
+    type: "Prototype",
     color: "lime", // lime
     featured: false,
     mediaUrl: "/media/ms_daimler.jpg",
     mediaType: "image" as "image" | "video",
     description:
-      "Designed and documented a standardised rapid-prototyping workflow for a 12-person cross-functional studio. Covered tool selection, fidelity ladders, handoff conventions, and a shared Figma component library — reducing repeated setup work across every new project.",
+      "As a Senior Software Engineer on Microsoft's Mixed Reality team, I co-designed and co-developed concept MR applications for Daimler's E-class Mercedes — including a brake replacement process visualization and a car roof storage accessory visualization. These prototypes were used in trade show booths to demonstrate the potential of MR for automotive maintenance and accessory visualization, and informed Daimler's software team's approach to future MR concept development work.",
     outcomes: [
-      "40% reduction in concept-to-demo time measured across 8 projects",
-      "Shared Figma library adopted by 3 product teams within 6 weeks",
-      "Onboarding time for new prototypers reduced from 2 weeks to 3 days",
+      "Provided a vision for how MR could be used to visualize complex automotive maintenance processes and accessories, directly influencing Daimler's software team's approach to MR concept development.",
+      "Daimler's software team adopted the prototyping workflow and conventions for their future MR concept development work.",
     ],
-    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp"],
+    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp", "HoloLens"],
     process:
-      "Ran a retrospective across 6 recent projects to identify recurring friction points. Mapped the full prototyping lifecycle and defined four fidelity tiers with clear entry/exit criteria. Piloted the workflow on two live projects before rolling out studio-wide.",
+      "**MR Brake Replacement Concept**\nDesigned and developed a concept MR app for Daimler's E-class Mercedes that visualized the brake replacement process. The prototype allowed users to see the internal components of the car and provided step-by-step guidance on how to replace the brakes.\n\n**Car Roof Storage Accessory Visualization**\nBuilt a visualization of a car roof storage accessory, allowing users to see how it would look on their vehicle and how it would function. This was used in a trade show booth to demonstrate the potential of MR for automotive maintenance and accessory visualization.",
   },
 ];
 

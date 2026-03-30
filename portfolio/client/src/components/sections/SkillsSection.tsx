@@ -12,11 +12,11 @@ const skillCategories = [
   {
     category: "Design",
     skills: [
-      { name: "Figma", level: 95, label: "Expert" },
       { name: "Prototyping", level: 92, label: "Expert" },
       { name: "Design Systems", level: 85, label: "Advanced" },
-      { name: "UX Research", level: 78, label: "Advanced" },
+      { name: "UX Research", level: 60, label: "Intermediate" },
       { name: "Motion Design", level: 72, label: "Proficient" },
+      { name: "Figma", level: 50, label: "Intermediate" },
     ],
   },
   {
@@ -47,6 +47,18 @@ const skillCategories = [
       { name: "Unity / C#", level: 58, label: "Intermediate" },
       { name: "Blender", level: 68, label: "Proficient" },
       { name: "Raspberry Pi", level: 82, label: "Advanced" },
+    ],
+  },
+  {
+    category: "Code",
+    skills: [
+      { name: "C#", level: 85, label: "Advanced" },
+      { name: "C", level: 72, label: "Proficient" },
+      { name: "C++", level: 68, label: "Intermediate" },
+      { name: "Javascript", level: 65, label: "Proficient" },
+      { name: "Java", level: 56, label: "Intermediate" },
+      { name: "HLSL", level: 78, label: "Advanced" },
+      { name: "GLSL", level: 68, label: "Intermediate" },
     ],
   },
 ];
