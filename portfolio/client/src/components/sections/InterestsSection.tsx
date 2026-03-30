@@ -7,7 +7,9 @@
 
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { useTokens } from "@/lib/theme-tokens";
+import { useTokens, ThemeTokens } from "@/lib/theme-tokens";
+
+const getInterestColor = (color: string, t: ThemeTokens) => t[color as keyof ThemeTokens];
 
 const interests = [
   {
@@ -17,7 +19,7 @@ const interests = [
     description: "Turning digital designs into physical objects is one of the most satisfying loops in making. I run an FDM and resin setup for rapid prototyping, functional parts, and experimental forms — bridging the gap between screen and hand.",
     details: ["FDM printing for structural prototypes and enclosures", "Resin printing for high-detail visual models and presentation pieces", "Parametric CAD in Fusion 360 for precision mechanical parts", "Post-processing: sanding, priming, painting, and finishing", "Experimenting with flexible filaments and composite materials"],
     tags: ["FDM", "Resin", "CAD", "Fusion 360", "Post-Processing"],
-    color: "oklch(0.88 0.18 168)",
+    color: "mint",
   },
   {
     id: "int2", icon: "⬡",
@@ -26,7 +28,7 @@ const interests = [
     description: "Building custom circuits and microcontroller projects is where software meets the physical world. From simple LED controllers to complex sensor arrays, I enjoy the problem-solving that comes with hardware constraints.",
     details: ["Arduino and ESP32 for embedded prototyping and IoT projects", "Custom PCB design and fabrication for cleaner final builds", "Sensor integration: IMUs, distance sensors, capacitive touch", "Wireless protocols: BLE, WiFi, MQTT for connected devices", "Soldering, enclosure design, and field-ready assembly"],
     tags: ["Arduino", "ESP32", "PCB Design", "Sensors", "BLE", "IoT"],
-    color: "oklch(0.62 0.22 285)",
+    color: "violet",
   },
   {
     id: "int3", icon: "◎",
@@ -35,7 +37,7 @@ const interests = [
     description: "Exploring the intersection of algorithms and aesthetics. Writing generative sketches in p5.js and Processing, experimenting with shader-based visuals, and building systems that produce unexpected beauty from simple rules.",
     details: ["p5.js and Processing for 2D generative sketches and animations", "GLSL fragment shaders for real-time GPU-rendered visuals", "Noise functions, cellular automata, and L-systems", "TouchDesigner for real-time audio-reactive visuals", "Plotter art: translating generative outputs to physical drawings"],
     tags: ["p5.js", "GLSL", "Processing", "TouchDesigner", "Creative Code"],
-    color: "oklch(0.75 0.15 200)",
+    color: "teal",
   },
   {
     id: "int4", icon: "▦",
@@ -44,7 +46,7 @@ const interests = [
     description: "Studying how objects are made, used, and experienced informs every prototype I build. I follow material science, manufacturing processes, and product design case studies closely — understanding constraints makes better design.",
     details: ["Material science: properties, finishes, and manufacturing constraints", "DFM (Design for Manufacturability) principles in prototype decisions", "Ergonomics and human factors in physical product design", "Studying iconic product design case studies and design history", "Visiting manufacturing facilities and trade shows when possible"],
     tags: ["Materials", "DFM", "Ergonomics", "Manufacturing", "Product Design"],
-    color: "oklch(0.78 0.12 45)",
+    color: "amber",
   },
   {
     id: "int5", icon: "◉",
@@ -53,7 +55,7 @@ const interests = [
     description: "Photography sharpens my eye for detail, light, and spatial relationships — skills that translate directly into better prototype presentation and visual communication. I document process as much as final outcomes.",
     details: ["Product and prototype photography for portfolio and documentation", "Process photography: capturing the making, not just the made", "Lighting setups for controlled studio and field shots", "Composition and visual hierarchy in still images", "Photo editing and colour grading in Lightroom and Capture One"],
     tags: ["Product Photography", "Composition", "Lighting", "Lightroom"],
-    color: "oklch(0.82 0.10 60)",
+    color: "orange",
   },
   {
     id: "int6", icon: "⬢",
@@ -62,7 +64,7 @@ const interests = [
     description: "Reading papers, attending talks, and experimenting with novel input modalities — from tangible interfaces to voice and gesture-based interactions. Staying at the frontier of HCI research directly informs what I prototype.",
     details: ["Following CHI, UIST, and TEI conference proceedings", "Experimenting with gesture and spatial input (Leap Motion, MediaPipe)", "Tangible user interfaces and physical-digital integration", "Voice and conversational UI prototyping", "Accessibility considerations in novel interaction paradigms"],
     tags: ["HCI", "Tangible UI", "Gesture", "Research", "CHI", "UIST"],
-    color: "oklch(0.70 0.18 168)",
+    color: "mintLight",
   },
 ];
 
@@ -88,12 +90,12 @@ function InterestPanel({ interest, onClose }: { interest: (typeof interests)[0];
       >
         <button onClick={onClose}
           style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: `1px solid ${t.border}`, color: t.textSecondary, width: "36px", height: "36px", borderRadius: "2px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", cursor: "none", transition: "all 0.2s ease" }}
-          onMouseEnter={(e) => { e.currentTarget.style.color = interest.color; e.currentTarget.style.borderColor = `${interest.color}55`; }}
+          onMouseEnter={(e) => { e.currentTarget.style.color = getInterestColor(interest.color, t); e.currentTarget.style.borderColor = `${getInterestColor(interest.color, t)}55`; }}
           onMouseLeave={(e) => { e.currentTarget.style.color = t.textSecondary; e.currentTarget.style.borderColor = t.border; }}
           aria-label="Close panel"
         >✕</button>
 
-        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "2.5rem", color: interest.color, marginBottom: "1.5rem", lineHeight: 1 }}>
+        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "2.5rem", color: getInterestColor(interest.color, t), marginBottom: "1.5rem", lineHeight: 1 }}>
           {interest.icon}
         </div>
         <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: t.textDim, marginBottom: "0.5rem" }}>
@@ -113,7 +115,7 @@ function InterestPanel({ interest, onClose }: { interest: (typeof interests)[0];
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {interest.details.map((item, i) => (
               <li key={i} style={{ display: "flex", gap: "0.75rem", marginBottom: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.6, color: t.textSecondary }}>
-                <span style={{ color: interest.color, flexShrink: 0, marginTop: "0.3rem", fontSize: "0.5rem" }}>◆</span>
+                <span style={{ color: getInterestColor(interest.color, t), flexShrink: 0, marginTop: "0.3rem", fontSize: "0.5rem" }}>◆</span>
                 {item}
               </li>
             ))}
@@ -125,7 +127,7 @@ function InterestPanel({ interest, onClose }: { interest: (typeof interests)[0];
           </div>
           <div className="flex flex-wrap gap-2">
             {interest.tags.map((tag) => (
-              <span key={tag} style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: interest.color, border: `1px solid ${interest.color}44`, padding: "0.25rem 0.75rem", borderRadius: "2px" }}>
+              <span key={tag} style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: getInterestColor(interest.color, t), border: `1px solid ${getInterestColor(interest.color, t)}44`, padding: "0.25rem 0.75rem", borderRadius: "2px" }}>
                 {tag}
               </span>
             ))}
@@ -153,7 +155,7 @@ function InterestCard({ interest, index, onClick }: { interest: (typeof interest
       onClick={onClick}
       style={{
         background: hovered ? t.surface2 : t.surface,
-        border: `1px solid ${hovered ? `${interest.color}44` : t.border}`,
+        border: `1px solid ${hovered ? `${getInterestColor(interest.color, t)}44` : t.border}`,
         padding: "2rem", borderRadius: "2px",
         transition: "all 0.3s ease", cursor: "none",
         position: "relative", overflow: "hidden",
@@ -162,9 +164,9 @@ function InterestCard({ interest, index, onClick }: { interest: (typeof interest
       <motion.div
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.2 }}
-        style={{ position: "absolute", bottom: 0, right: 0, width: "60px", height: "60px", background: `radial-gradient(circle at bottom right, ${interest.color}18, transparent 70%)`, pointerEvents: "none" }}
+        style={{ position: "absolute", bottom: 0, right: 0, width: "60px", height: "60px", background: `radial-gradient(circle at bottom right, ${getInterestColor(interest.color, t)}18, transparent 70%)`, pointerEvents: "none" }}
       />
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "1.5rem", color: hovered ? interest.color : t.textDim, marginBottom: "1rem", transition: "color 0.3s ease", lineHeight: 1 }}>
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: "1.5rem", color: hovered ? getInterestColor(interest.color, t) : t.textDim, marginBottom: "1rem", transition: "color 0.3s ease", lineHeight: 1 }}>
         {interest.icon}
       </div>
       <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: "1rem", color: t.textPrimary, marginBottom: "0.75rem", lineHeight: 1.3 }}>
@@ -175,7 +177,7 @@ function InterestCard({ interest, index, onClick }: { interest: (typeof interest
       </p>
       <div className="flex flex-wrap gap-2">
         {interest.tags.slice(0, 3).map((tag) => (
-          <span key={tag} style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: hovered ? interest.color : t.textMuted, border: `1px solid ${hovered ? `${interest.color}44` : t.borderSubtle}`, padding: "0.2rem 0.6rem", borderRadius: "2px", transition: "all 0.3s ease" }}>
+          <span key={tag} style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.6rem", letterSpacing: "0.1em", textTransform: "uppercase", color: hovered ? getInterestColor(interest.color, t) : t.textMuted, border: `1px solid ${hovered ? `${getInterestColor(interest.color, t)}44` : t.borderSubtle}`, padding: "0.2rem 0.6rem", borderRadius: "2px", transition: "all 0.3s ease" }}>
             {tag}
           </span>
         ))}
@@ -188,7 +190,7 @@ function InterestCard({ interest, index, onClick }: { interest: (typeof interest
       <motion.div
         animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 4 }}
         transition={{ duration: 0.2 }}
-        style={{ position: "absolute", bottom: "1rem", right: "1rem", fontFamily: "'Space Mono', monospace", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase", color: interest.color }}
+        style={{ position: "absolute", bottom: "1rem", right: "1rem", fontFamily: "'Space Mono', monospace", fontSize: "0.55rem", letterSpacing: "0.12em", textTransform: "uppercase", color: getInterestColor(interest.color, t) }}
       >
         Explore →
       </motion.div>

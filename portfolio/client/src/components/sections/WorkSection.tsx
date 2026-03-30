@@ -20,7 +20,9 @@
 
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { useTokens } from "@/lib/theme-tokens";
+import { ThemeTokens, useTokens } from "@/lib/theme-tokens";
+
+const getProjectColor = (color: string, t: ThemeTokens) => t[color as keyof ThemeTokens];
 
 function renderMarkdown(text: string): string {
   return text
@@ -41,7 +43,7 @@ const projects = [
     tags: ["Product Design Prototyping", "Spatial/3D UX Design", "Stereoscopic Video & Cinematography", "Human Factors / Visual Comfort Research", "Interaction Design", "User Research & Usability Testing", "Technical Writing", "Content Strategy", "Quality Assurance / Dogfooding"],
     context: { company: "Meta", role: "Product Design Prototyper", period: "2024-2026" },
     type: "Product",
-    color: "oklch(0.62 0.22 285)", // violet
+    color: "violet", // violet
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
     mediaUrl: "/media/events_cp_original.mp4",
@@ -73,9 +75,9 @@ const projects = [
     tags: ["Product Design Prototyping", "3D Reviews", "VR Meetings", "Content Strategy", "Quality Assurance / Dogfooding", "Spatial/3D UX Design", "Interaction Design", "User Research & Usability Testing"],
     context: { company: "Meta", role: "Product Design Prototyper", period: "2022-2024" },
     type: "Product",
-    color: "oklch(0.88 0.18 168)", // mint
+    color: "mint", // mint
     featured: false,
-    mediaUrl: null as string | null,
+    mediaUrl: "/media/horizon-workrooms.jpg",
     mediaType: "image" as "image" | "video",
     description:
       "As a Product Design Prototyper on Meta's Workrooms team, I led prototyping and collaborated with the design of 3D interaction systems for VR — from model review tools to text input methods — enabling new ways for people to collaborate with spatial content during virtual meetings.",
@@ -97,7 +99,7 @@ const projects = [
     tags: ["XR / AR", "Spark AR", "AR Body Scanning", "Product Design Prototyping"],
     context: { company: "Facebook", role: "Product Design Prototyper", period: "2021-2022" },
     type: "Product",
-    color: "oklch(0.75 0.15 200)", // teal
+    color: "teal", // teal
     featured: false,
     mediaUrl: "/media/SparkAR_placeholder.png",
     mediaType: "image" as "image" | "video",
@@ -124,7 +126,7 @@ const projects = [
     tags: ["sEMG", "Haptics", "Creative Technologist", "Reality Labs Research", "Wristband"],
     context: { company: "Facebook", role: "Creative Technologist", period: "2020" },
     type: "Research",
-    color: "oklch(0.70 0.20 330)", // rose
+    color: "rose", // rose
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
     mediaUrl: null as string | null,
@@ -149,7 +151,7 @@ const projects = [
     tags: ["Product Design", "Embedded", "Mobile"],
     context: { company: "STRIVR", role: "VR Developer", period: "2019" },
     type: "Research",
-    color: "oklch(0.78 0.12 45)", // amber
+    color: "amber", // amber
     featured: false,
     mediaUrl: null as string | null,
     mediaType: "image" as "image" | "video",
@@ -171,7 +173,7 @@ const projects = [
     tags: ["Process Design", "Tooling", "Figma"],
     context: { company: "Microsoft", role: "Senior Software Engineer", period: "2018-2019" },
     type: "Process",
-    color: "oklch(0.82 0.10 120)", // lime
+    color: "lime", // lime
     featured: false,
     mediaUrl: null as string | null,
     mediaType: "image" as "image" | "video",
@@ -236,10 +238,10 @@ function MediaBlock({
         overflow: "hidden",
         borderRadius: "2px",
         marginBottom: "1.5rem",
-        background: `${project.color}0a`,
+        background: `${getProjectColor(project.color, t)}0a`,
         borderWidth: "1px",
         borderStyle: "dashed",
-        borderColor: hovered ? `${project.color}77` : `${project.color}44`,
+        borderColor: hovered ? `${getProjectColor(project.color, t)}77` : `${getProjectColor(project.color, t)}44`,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -254,7 +256,7 @@ function MediaBlock({
         height="28"
         viewBox="0 0 24 24"
         fill="none"
-        stroke={project.color}
+        stroke={getProjectColor(project.color, t)}
         strokeWidth="1.2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -280,7 +282,7 @@ function MediaBlock({
           fontSize: "0.6rem",
           letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: project.color,
+          color: getProjectColor(project.color, t),
           opacity: 0.7,
         }}
       >
@@ -356,7 +358,7 @@ function WorkPanel({
             left: 0,
             right: 0,
             height: "3px",
-            background: project.color,
+            background: getProjectColor(project.color, t),
           }}
         />
 
@@ -424,7 +426,7 @@ function WorkPanel({
             letterSpacing: "0.15em",
             textTransform: "uppercase",
             color: "oklch(0.09 0.018 240)",
-            background: project.color,
+            background: getProjectColor(project.color, t),
             padding: "0.25rem 0.75rem",
             borderRadius: "2px",
             marginBottom: "1.5rem",
@@ -455,7 +457,7 @@ function WorkPanel({
             fontFamily: "'Inter', sans-serif",
             fontSize: "0.9375rem",
             lineHeight: 1.5,
-            color: project.color,
+            color: getProjectColor(project.color, t),
             marginBottom: "1.5rem",
             fontStyle: "italic",
           }}
@@ -510,7 +512,7 @@ function WorkPanel({
           <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
             {project.outcomes.map((item, i) => (
               <li key={i} style={{ display: "flex", gap: "0.75rem", marginBottom: "0.75rem", fontFamily: "'Inter', sans-serif", fontSize: "0.875rem", lineHeight: 1.6, color: t.textSecondary }}>
-                <span style={{ color: project.color, marginTop: "0.35rem", flexShrink: 0, fontSize: "0.6rem" }}>▸</span>
+                <span style={{ color: getProjectColor(project.color, t), marginTop: "0.35rem", flexShrink: 0, fontSize: "0.6rem" }}>▸</span>
                 {item}
               </li>
             ))}
@@ -531,8 +533,8 @@ function WorkPanel({
                   fontSize: "0.65rem",
                   letterSpacing: "0.08em",
                   textTransform: "uppercase",
-                  color: project.color,
-                  border: `1px solid ${project.color}33`,
+                  color: getProjectColor(project.color, t),
+                  border: `1px solid ${getProjectColor(project.color, t)}33`,
                   padding: "0.3rem 0.75rem",
                   borderRadius: "2px",
                 }}
@@ -576,14 +578,14 @@ function WorkCard({
         background: hovered ? t.surfaceHover : t.surface2,
         borderWidth: "1px",
         borderStyle: "solid",
-        borderColor: hovered ? project.color + "55" : t.borderSubtle,
+        borderColor: hovered ? getProjectColor(project.color, t) + "55" : t.borderSubtle,
         borderRadius: "4px",
         padding: "1.75rem",
         cursor: "none",
         transition: "background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease",
         transform: hovered ? "translateY(-4px)" : "translateY(0)",
         boxShadow: hovered
-          ? `0 12px 40px ${project.color}18, 0 0 0 1px ${project.color}22`
+          ? `0 12px 40px ${getProjectColor(project.color, t)}18, 0 0 0 1px ${getProjectColor(project.color, t)}22`
           : "none",
         // Featured cards span full width
         gridColumn: project.featured ? "1 / -1" : undefined,
@@ -599,7 +601,7 @@ function WorkCard({
           left: 0,
           right: 0,
           height: "2px",
-          background: project.color,
+          background: getProjectColor(project.color, t),
           borderRadius: "4px 4px 0 0",
           transformOrigin: "left",
         }}
@@ -618,8 +620,8 @@ function WorkCard({
             fontSize: "0.58rem",
             letterSpacing: "0.15em",
             textTransform: "uppercase",
-            color: project.color,
-            background: `${project.color}18`,
+            color: getProjectColor(project.color, t),
+            background: `${getProjectColor(project.color, t)}18`,
             padding: "0.2rem 0.6rem",
             borderRadius: "2px",
           }}
@@ -702,7 +704,7 @@ function WorkCard({
             fontFamily: "'Space Mono', monospace",
             fontSize: "0.6rem",
             letterSpacing: "0.08em",
-            color: project.color,
+            color: getProjectColor(project.color, t),
           }}
         >
           Open case study →

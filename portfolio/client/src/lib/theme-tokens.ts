@@ -30,6 +30,12 @@ export interface ThemeTokens {
   mint: string;
   mintDim: string;      // mint at low opacity
   violet: string;
+  teal: string;         // new: for Spark AR project
+  rose: string;         // new: for sEMG project
+  amber: string;        // new: for STRIVR project
+  lime: string;         // new: for MSDaimler project
+  orange: string;       // new: for Photography interest
+  mintLight: string;    // new: for Interaction Design Research interest
 
   // Watermark section numbers
   sectionNumber: string;
@@ -58,6 +64,12 @@ const dark: ThemeTokens = {
   mint:          "oklch(0.88 0.18 168)",
   mintDim:       "oklch(0.88 0.18 168 / 0.5)",
   violet:        "oklch(0.62 0.22 285)",
+  teal:          "oklch(0.75 0.15 200)", 
+  rose:          "oklch(0.70 0.20 330)",
+  amber:         "oklch(0.78 0.12 45)", 
+  lime:          "oklch(0.82 0.10 120)",
+  orange:        "oklch(0.82 0.10 60)",
+  mintLight:     "oklch(0.70 0.18 168)",
 
   sectionNumber: "oklch(0.92 0.008 220 / 0.03)",
 
@@ -84,6 +96,12 @@ const light: ThemeTokens = {
   mint:          "oklch(0.55 0.18 168)",   // darker mint for light bg legibility
   mintDim:       "oklch(0.55 0.18 168 / 0.5)",
   violet:        "oklch(0.50 0.22 285)",   // darker violet for light bg
+  teal:          "oklch(0.50 0.15 200)",   // darker teal for light bg
+  rose:          "oklch(0.45 0.20 330)",   // darker rose for light bg
+  amber:         "oklch(0.53 0.12 45)",    // darker amber for light bg
+  lime:          "oklch(0.57 0.10 120)",   // darker lime for light bg
+  orange:        "oklch(0.57 0.10 60)",    // darker orange for light bg
+  mintLight:     "oklch(0.45 0.18 168)",   // darker mintLight for light bg
 
   sectionNumber: "oklch(0.18 0.02 240 / 0.04)",
 
