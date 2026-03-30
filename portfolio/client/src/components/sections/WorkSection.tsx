@@ -129,42 +129,41 @@ const projects = [
     color: "rose", // rose
     featured: true,
     // Replace with your own image URL or video URL. Supported: .jpg, .png, .gif, .mp4, .webm
-    mediaUrl: null as string | null,
-    mediaType: "video" as "image" | "video",
+    mediaUrl: "/media/meta_semg_hands.jpg",
+    mediaType: "image" as "image" | "video",
     description:
       "As a Product Design Prototyper on Meta's wrist-based neural interface design research team, I built prototyping tools, interaction prototypes, and design research artifacts that supported the development of a surface electromyography (sEMG) wristband — a non-invasive device that detects electrical signals from motor nerves at the wrist to enable gesture-based control of AR glasses. This research is described in a [public white paper](https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.meta.com%2Fen-gb%2Fblog%2Fsurface-emg-wrist-white-paper-reality-labs%2F&h=AT4VAJXYTwmhwXhHT-WnQiqPj8hrvro7j87qcIPfxHXouEd1KgwL5L5HfSQ3VciL2q77uvyMbzW3-3ySw-ctBoqOQ6zkY1sqESawmgsgvcUI5LM5Dye3pWZMspecDHOxT-FlE6qjnGCVWQ) by Meta.",
     outcomes: [
       "Built the team's primary rapid prototyping firmware platform for wrist-based interaction — adopted across the design research organization.",
       "Eliminated per-prototype firmware rewrites with an extensible plug-and-play communication protocol.",
       "Enabled wireless, no-solder prototyping that lowered the barrier for the full team to build and test wrist interactions.",
-	  "Explored haptic interactions and input modalities using a programmable haptic research wristband",
-	  "Prototyped MR watch, media player haptics, and social haptic experiences",
+	    "Explored haptic interactions and input modalities using a programmable haptic research wristband",
+	    "Prototyped media player haptics and social haptic experiences",
     ],
     tools: ["Arduino IDE", "Unity", "C#", "C", "HoloLens"],
     process:
-      "**Rapid Prototyping Platform**\nDesigned and built a modular hardware/software ecosystem that enabled the team to rapidly prototype wrist-based interactions. This included a custom BLE communication protocol with firmware and a Unity SDK for low-power microcontrollers, and a self-contained wristband prototyping kit with silicone bands and snap-on component mounts. The system used off-the-shelf I2C sensors in a no-solder, plug-and-play configuration, eliminating the need to rewrite firmware for each new sensor arrangement.\n\n**Haptic Interaction & Input Modality Exploration**\nBuilt prototypes using a programmable haptic research wristband to explore haptic interactions and novel input modalities — investigating how tactile feedback at the wrist could support or enhance user input for AR/VR.\n\n**Mixed-Reality Watch & Social Haptics Prototyping**\nPrototyped mixed-reality watch and media player haptic interactions, as well as social haptic experiences, as part of the team's wrist interaction design research.\n\n**Reusable Tools & Documentation**\nCreated reusable code libraries, a protocol specification, a Unity SDK, and comprehensive onboarding documentation. Assembled and distributed prototyping kits across the team to standardize tooling.\n\n",
+      "**Rapid Prototyping Platform**\nDesigned and built a modular hardware/software ecosystem that enabled the team to rapidly prototype wrist-based interactions. This included a custom BLE communication protocol with firmware and a Unity SDK for low-power microcontrollers, and a self-contained wristband prototyping kit with silicone bands and snap-on component mounts. The system used off-the-shelf I2C sensors in a no-solder, plug-and-play configuration, eliminating the need to rewrite firmware for each new sensor arrangement.\n\n**Haptic Interaction & Input Modality Exploration**\nBuilt prototypes using a programmable haptic research wristband to explore haptic interactions and novel input modalities — investigating how tactile feedback at the wrist could support or enhance user input for AR/VR.\n\n**Mixed-Reality Watch & Social Haptics Prototyping**\nPrototyped media player haptic interactions, as well as social haptic experiences, as part of the team's wrist interaction design research.\n\n**Reusable Tools & Documentation**\nCreated reusable code libraries, a protocol specification, a Unity SDK, and comprehensive onboarding documentation. Assembled and distributed prototyping kits across the team to standardize tooling.\n\n",
   },
   {
     id: "proj_strivr",
-    title: "IoT Device Companion App",
-    outcome: "0→1 product shipped; 2,400 units sold in first quarter",
-    tags: ["Product Design", "Embedded", "Mobile"],
-    context: { company: "STRIVR", role: "VR Developer", period: "2019" },
+    title: "XR Research Prototyping",
+    outcome: "Illustrated the potential of emerging XR technologies for immersive training applications through a series of prototypes",
+    tags: ["XR Training", "eye tracking", "hand tracking", "Immersive training", "VR soft skills"],
+    context: { company: "STRIVR", role: "Senior Software Engineer", period: "2019" },
     type: "Research",
     color: "amber", // amber
     featured: false,
-    mediaUrl: null as string | null,
+    mediaUrl: "/media/strivr_boa_eye_2.gif",
     mediaType: "image" as "image" | "video",
     description:
-      "Solo prototyper for an early-stage hardware startup building a connected home sensor. Designed the companion mobile app and the embedded firmware UI, then built functional prototypes used to close a seed funding round.",
+      "As a Senior Software Engineer at STRIVR, I led the design and development of XR prototypes that explored the potential of emerging technologies like eye tracking and hand tracking for immersive training applications. These prototypes were used to validate concepts, inform product direction, and demonstrate the value of VR for soft skills training and virtual on-site training for enterprise clients.",
     outcomes: [
-      "Prototypes directly supported a successful seed funding pitch",
-      "2,400 units sold in the first quarter post-launch",
-      "App store rating of 4.6 / 5 at launch based on beta-tester feedback",
+      "Demonstrated pratical use cases for eye tracking for integration into STRIVR's enterprise training platform",
+      "Designed hand-tracking interactions for VR training scenarios, showcasing potential for more natural and intuitive user interfaces",
     ],
-    tools: ["HoloLens", "Unity", "Tobii Eye Tracker", "Leap Motion controller"],
+    tools: ["HoloLens", "Unity", "Tobii Eye Tracker", "Leap Motion controller", "Valve Index", "Pico", "Blender", "Gimp", "VS Pro"],
     process:
-      "Ran a 3-day design sprint with the founding team to align on core use cases. Built a clickthrough prototype in Figma for investor demos. Simultaneously developed a functional BLE-connected prototype on Arduino to validate the hardware UX.",
+      "**Eye Tracking**\nInstalled a Tobii eye tracker on a Valve Index to build eye-tracking prototypes..\n\n**Hand Tracking**\nUsed a Leap Motion controller to prototype hand tracking interactions on both PC VR and standalone VR hardware. Developed a generic interface for hand tracking to work across hand tracking implementations.\n\n**Immersive Training Prototypes**\nBuilt prototypes for soft skills training and virtual on-site training scenarios, demonstrating the potential of VR for enterprise training applications.",
   },
   {
     id: "proj_msdaimler",
@@ -175,7 +174,7 @@ const projects = [
     type: "Process",
     color: "lime", // lime
     featured: false,
-    mediaUrl: null as string | null,
+    mediaUrl: "/media/ms_daimler.jpg",
     mediaType: "image" as "image" | "video",
     description:
       "Designed and documented a standardised rapid-prototyping workflow for a 12-person cross-functional studio. Covered tool selection, fidelity ladders, handoff conventions, and a shared Figma component library — reducing repeated setup work across every new project.",
@@ -184,7 +183,7 @@ const projects = [
       "Shared Figma library adopted by 3 product teams within 6 weeks",
       "Onboarding time for new prototypers reduced from 2 weeks to 3 days",
     ],
-    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp", "Shader Toy", "Graph Toy"],
+    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp"],
     process:
       "Ran a retrospective across 6 recent projects to identify recurring friction points. Mapped the full prototyping lifecycle and defined four fidelity tiers with clear entry/exit criteria. Piloted the workflow on two live projects before rolling out studio-wide.",
   },
