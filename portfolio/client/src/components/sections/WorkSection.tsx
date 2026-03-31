@@ -182,9 +182,29 @@ const projects = [
       "Provided a vision for how MR could be used to visualize complex automotive maintenance processes and accessories, directly influencing Daimler's software team's approach to MR concept development.",
       "Daimler's software team adopted the prototyping workflow and conventions for their future MR concept development work.",
     ],
-    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp", "HoloLens"],
+    tools: ["Unity", "C#", "VS Pro", "Blender", "Gimp", "HoloLens", "MS Teams"],
     process:
       "**MR Brake Replacement Concept**\nDesigned and developed a concept MR app for Daimler's E-class Mercedes that visualized the brake replacement process. The prototype allowed users to see the internal components of the car and provided step-by-step guidance on how to replace the brakes.\n\n**Car Roof Storage Accessory Visualization**\nBuilt a visualization of a car roof storage accessory, allowing users to see how it would look on their vehicle and how it would function. This was used in a trade show booth to demonstrate the potential of MR for automotive maintenance and accessory visualization.",
+  },
+  {
+    id: "proj_dewa",
+    title: "Dewa Desalination Plant MR Prototype",
+    outcome: "Delivered a concept MR app for Dewa (Dubai Electricity and Water Authority) that visualized the desalination plant's operational status, demonstrating the potential of MR for complex industrial training and maintenance applications.",
+    tags: ["Prototyping", "Mixed Reality", "Dewa", "MR Concept Development", "HoloLens"],
+    context: { company: "Microsoft", role: "Senior Software Engineer", period: "2018-2019" },
+    type: "Prototype",
+    color: "violet", // violet
+    featured: false,
+    mediaUrl: "/media/ms_dewa.mp4",
+    mediaType: "video" as "image" | "video",
+    description:
+      "As a Senior Software Engineer on Microsoft's Mixed Reality team, I co-designed and co-developed a concept MR application for Dewa (Dubai Electricity and Water Authority) that visualized the operational status of their desalination plant. The prototype provided an interactive visualization of the plant's systems and processes, demonstrating the potential of MR for complex industrial training and maintenance applications.",
+    outcomes: [
+      "Provided a vision for how MR could be used to visualize complex industrial processes and operational status, directly influencing Dewa's approach to MR concept development.",
+    ],
+    tools: ["Unity", "C#", "VS Pro", "HoloLens", "MS Teams"],
+    process:
+      "**UI Design**\nImplemented the UI design for the MR app, including the layout, interactions, and visual design. This includes note recording interface, plant panel pop-ups, and other interactive elements.",
   },
 ];
 

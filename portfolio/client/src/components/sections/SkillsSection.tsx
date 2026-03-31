@@ -28,6 +28,7 @@ const skillCategories = [
       { name: "Design Systems", level: 73, label: "Proficient" },
       { name: "UX Research", level: 60, label: "Intermediate" },
       { name: "Gen AI", level: 72, label: "Proficient" },
+      { name: "Prompt Engineering", level: 70, label: "Proficient" },
     ],
   },
   {
@@ -50,9 +51,10 @@ const skillCategories = [
       { name: "Laser Cutting / CNC", level: 50, label: "Intermediate" },
       { name: "Electronics / PCB", level: 66, label: "Intermediate" },
       { name: "Arduino / Hardware", level: 70, label: "Proficient" },
+      { name: "Prop Building", level: 84, label: "Advanced" },
       { name: "3D Printing", level: 81, label: "Advanced" },
       { name: "Papier-mâché", level: 86, label: "Advanced" },
-      { name: "Woodworking", level: 77, label: "Proficient" },
+      { name: "Woodworking", level: 70, label: "Proficient" },
     ],
   },
 ];
