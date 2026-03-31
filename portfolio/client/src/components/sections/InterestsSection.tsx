@@ -72,19 +72,19 @@ const interests: Interest[] = [
     tags: ["Sewing", "Fabrics", "Cosplay"],
     color: "amber",
     media: [
-      { url: "/media/stormtrooper_1.jpg", type: "image", caption: "Finished neck seal" },
+      { url: "/media/maker/stormtrooper_1.jpg", type: "image", caption: "Finished neck seal" },
     ],
   },
   {
     id: "int5", icon: "◉",
-    title: "Photography & Visual Storytelling",
-    description: "Photography sharpens my eye for detail, light, and spatial relationships — skills that translate directly into better prototype presentation and visual communication. I document process as much as final outcomes.",
-    tags: ["Product Photography", "Composition", "Lighting", "Lightroom"],
+    title: "Ornamental: Cat Memorial Ornament",
+    description: "When our cat, Miu Miu, died at 19 years of age, I was devistated. To memorialize her, I designed and 3D printed this ornament of her likeness doing what she liked best... sleeping in front of the fireplace next to the Christmas tree. The cat is the switch to turn on the LED lights by sliding her across the floor.",
+    tags: ["3D Printing", "Electronics"],
     color: "orange",
     media: [
-      { url: "/media/horizon-workrooms.jpg", type: "image", caption: "Product photography setup" },
-      { url: "/media/ms_dewa.mp4", type: "video", caption: "Studio lighting" },
-      { url: "/media/ms_daimler.jpg", type: "image", caption: "Photography timelapse" },
+      { url: "/media/maker/cat_ornament_1.jpg", type: "image", caption: "Partial 3D print progress" },
+      { url: "/media/maker/cat_ornament_2.jpg", type: "image", caption: "Internal wiring for LED lights" },
+      { url: "/media/maker/cat_ornament_3.jpg", type: "image", caption: "Finished cat memorial ornament" },
     ],
   },
   {
@@ -94,9 +94,7 @@ const interests: Interest[] = [
     tags: ["HCI", "Tangible UI", "Gesture", "Research", "CHI", "UIST"],
     color: "mintLight",
     media: [
-      { url: "/media/horizon-workrooms.jpg", type: "image", caption: "Gesture interface prototype" },
-      { url: "/media/ms_dewa.mp4", type: "video", caption: "Tangible UI demonstration" },
-      { url: "/media/ms_daimler.jpg", type: "image", caption: "Research setup" },
+
     ],
   },
 ];
