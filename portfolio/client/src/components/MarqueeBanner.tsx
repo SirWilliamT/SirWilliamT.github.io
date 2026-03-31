@@ -7,10 +7,10 @@
 import { useTokens } from "@/lib/theme-tokens";
 
 const items = [
-  "Rapid Prototyping", "◈", "Figma", "◈", "Arduino", "◈",
-  "3D Printing", "◈", "React", "◈", "TouchDesigner", "◈",
-  "Hardware Design", "◈", "WebGL", "◈", "User Research", "◈",
-  "Fusion 360", "◈", "Creative Technology", "◈", "PCB Design", "◈",
+  "Rapid Prototyping", "◈", "Gen AI", "◈", "Arduino", "◈",
+  "3D Printing", "◈", "Blender", "◈", "Shaders", "◈",
+  "Hardware Design", "◈", "XR", "◈", "User Research", "◈",
+  "Autodesk Fusion", "◈", "Creative Technology", "◈", "Unity", "◈",
 ];
 
 function Track({ t }: { t: ReturnType<typeof useTokens> }) {

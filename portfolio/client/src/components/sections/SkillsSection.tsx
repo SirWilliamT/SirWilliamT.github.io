@@ -10,7 +10,7 @@ import { useTokens } from "@/lib/theme-tokens";
 
 const skillCategories = [
   {
-    category: "Code",
+    category: "Engineering",
     skills: [
       { name: "C#", level: 85, label: "Advanced" },
       { name: "C", level: 72, label: "Proficient" },
@@ -19,12 +19,14 @@ const skillCategories = [
       { name: "Java", level: 56, label: "Intermediate" },
       { name: "HLSL", level: 78, label: "Advanced" },
       { name: "GLSL", level: 68, label: "Intermediate" },
+      { name: "3D Math", level: 73, label: "Proficient" },
     ],
   },
   {
     category: "Design",
     skills: [
       { name: "Prototyping", level: 92, label: "Expert" },
+      { name: "XR Interactions", level: 91, label: "Expert" },
       { name: "Design Systems", level: 73, label: "Proficient" },
       { name: "UX Research", level: 60, label: "Intermediate" },
       { name: "Gen AI", level: 72, label: "Proficient" },
