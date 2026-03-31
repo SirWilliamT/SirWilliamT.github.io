@@ -16,10 +16,10 @@ import { useTokens } from "@/lib/theme-tokens";
 const WEB3FORMS_KEY = "914ccd03-0492-4897-9fe4-c14bd0178874";
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "↗" },
-  { label: "GitHub", href: "https://github.com", icon: "↗" },
-  { label: "Dribbble", href: "https://dribbble.com", icon: "↗" },
-  { label: "Twitter / X", href: "https://twitter.com", icon: "↗" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/william-tian-2a92973/", icon: "↗" },
+  //{ label: "GitHub", href: "https://github.com", icon: "↗" },
+  //{ label: "Dribbble", href: "https://dribbble.com", icon: "↗" },
+  //{ label: "Twitter / X", href: "https://twitter.com", icon: "↗" },
 ];
 
 type FormState = "idle" | "submitting" | "success" | "error";

@@ -10,46 +10,6 @@ import { useTokens } from "@/lib/theme-tokens";
 
 const skillCategories = [
   {
-    category: "Design",
-    skills: [
-      { name: "Prototyping", level: 92, label: "Expert" },
-      { name: "Design Systems", level: 85, label: "Advanced" },
-      { name: "UX Research", level: 60, label: "Intermediate" },
-      { name: "Motion Design", level: 72, label: "Proficient" },
-      { name: "Figma", level: 50, label: "Intermediate" },
-    ],
-  },
-  {
-    category: "Engineering",
-    skills: [
-      { name: "Arduino / Hardware", level: 88, label: "Advanced" },
-      { name: "React / TypeScript", level: 82, label: "Advanced" },
-      { name: "3D Printing / CAD", level: 90, label: "Expert" },
-      { name: "Python", level: 75, label: "Proficient" },
-      { name: "WebGL / Shaders", level: 60, label: "Intermediate" },
-    ],
-  },
-  {
-    category: "Tools & Methods",
-    skills: [
-      { name: "Rapid Prototyping", level: 96, label: "Expert" },
-      { name: "User Testing", level: 80, label: "Advanced" },
-      { name: "Laser Cutting / CNC", level: 85, label: "Advanced" },
-      { name: "Electronics / PCB", level: 70, label: "Proficient" },
-      { name: "Agile / Scrum", level: 78, label: "Advanced" },
-    ],
-  },
-  {
-    category: "Creative Tech",
-    skills: [
-      { name: "TouchDesigner", level: 65, label: "Intermediate" },
-      { name: "Processing / p5.js", level: 72, label: "Proficient" },
-      { name: "Unity / C#", level: 58, label: "Intermediate" },
-      { name: "Blender", level: 68, label: "Proficient" },
-      { name: "Raspberry Pi", level: 82, label: "Advanced" },
-    ],
-  },
-  {
     category: "Code",
     skills: [
       { name: "C#", level: 85, label: "Advanced" },
@@ -59,6 +19,40 @@ const skillCategories = [
       { name: "Java", level: 56, label: "Intermediate" },
       { name: "HLSL", level: 78, label: "Advanced" },
       { name: "GLSL", level: 68, label: "Intermediate" },
+    ],
+  },
+  {
+    category: "Design",
+    skills: [
+      { name: "Prototyping", level: 92, label: "Expert" },
+      { name: "Design Systems", level: 73, label: "Proficient" },
+      { name: "UX Research", level: 60, label: "Intermediate" },
+      { name: "Gen AI", level: 72, label: "Proficient" },
+    ],
+  },
+  {
+    category: "Tools",
+    skills: [
+      { name: "Unity", level: 89, label: "Advanced" },
+      { name: "Blender", level: 80, label: "Advanced" },
+      { name: "Gimp", level: 78, label: "Proficient" },
+      { name: "Autodesk Fusion", level: 51, label: "Intermediate" },
+      { name: "Figma", level: 50, label: "Intermediate" },
+      { name: "VS Code / Pro", level: 73, label: "Proficient" },
+      { name: "FL Studio", level: 50, label: "Intermediate" },
+      { name: "DaVinci Resolve", level: 66, label: "Intermediate" },
+      { name: "Audacity", level: 60, label: "Intermediate" },
+    ],
+  },
+  {
+    category: "Maker Skills",
+    skills: [
+      { name: "Laser Cutting / CNC", level: 50, label: "Intermediate" },
+      { name: "Electronics / PCB", level: 66, label: "Intermediate" },
+      { name: "Arduino / Hardware", level: 70, label: "Proficient" },
+      { name: "3D Printing", level: 81, label: "Advanced" },
+      { name: "Papier-mâché", level: 86, label: "Advanced" },
+      { name: "Woodworking", level: 77, label: "Proficient" },
     ],
   },
 ];

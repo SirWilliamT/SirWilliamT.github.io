@@ -9,10 +9,10 @@ import { useRef } from "react";
 import { useTokens } from "@/lib/theme-tokens";
 
 const stats = [
-  { value: "5+",  label: "Years Experience" },
-  { value: "30+", label: "Prototypes Shipped" },
+  { value: "23+",  label: "Years Experience" },
+  { value: "20+", label: "Prototypes Shipped" },
   { value: "12+", label: "Tools Mastered" },
-  { value: "3",   label: "Industries" },
+  { value: "6+",   label: "Games Shipped" },
 ];
 
 export default function AboutSection() {
