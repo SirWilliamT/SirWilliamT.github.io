@@ -47,6 +47,7 @@ const interests: Interest[] = [
     tags: ["3D Printing", "Blender", "Fiberglass", "Prop Building", "Painting", "Cosplay"],
     color: "violet",
     media: [
+      { url: "/media/maker/tiefighterpilot_6.jpg", type: "image", caption: "Cut fiberglass cast of the chest plate" },
       { url: "/media/maker/tiefighterpilot_1.jpg", type: "image", caption: "Prepping armor for priming" },
       { url: "/media/maker/tiefighterpilot_2.jpg", type: "image", caption: "Prepped helmet for priming" },
       { url: "/media/maker/tiefighterpilot_3.jpg", type: "image", caption: "Primed helmet and armor pieces" },
@@ -89,12 +90,16 @@ const interests: Interest[] = [
   },
   {
     id: "int6", icon: "⬢",
-    title: "Interaction Design Research",
-    description: "Reading papers, attending talks, and experimenting with novel input modalities — from tangible interfaces to voice and gesture-based interactions. Staying at the frontier of HCI research directly informs what I prototype.",
-    tags: ["HCI", "Tangible UI", "Gesture", "Research", "CHI", "UIST"],
+    title: "Woodwork: Cat \"House\" Door",
+    description: "Created a custom cat door for a storage space beneath our stairs. I designed the door to look like the facade of a multi-story house, complete with windows and a door. I cut the pieces from plywood, assembled them, and painted (with some intentional marks for character) the finished product to create a whimsical entrance for our cat.",
+    tags: ["Woodwork", "Prop Building", "Painting"],
     color: "mintLight",
     media: [
-
+      { url: "/media/maker/cat_door_1.jpg", type: "image", caption: "Cut out windows and cat door" },
+      { url: "/media/maker/cat_door_2.jpg", type: "image", caption: "Adding in millwork and decorative elements" },
+      { url: "/media/maker/cat_door_3.jpg", type: "image", caption: "Finished cat door with some decorative touches" },
+      { url: "/media/maker/cat_door_4.jpg", type: "image", caption: "Inside reveals platforms so the cats can look out the windows" },
+      { url: "/media/maker/cat_door_5.jpg", type: "image", caption: "A picture of the residents" },
     ],
   },
 ];
