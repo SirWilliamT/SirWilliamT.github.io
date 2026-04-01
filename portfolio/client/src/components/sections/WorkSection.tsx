@@ -591,6 +591,7 @@ function WorkCard({
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className={project.featured ? "md:col-span-2" : ""}
       style={{
         position: "relative",
         background: hovered ? t.surfaceHover : t.surface2,
@@ -605,8 +606,7 @@ function WorkCard({
         boxShadow: hovered
           ? `0 12px 40px ${getProjectColor(project.color, t)}18, 0 0 0 1px ${getProjectColor(project.color, t)}22`
           : "none",
-        // Featured cards span full width
-        gridColumn: project.featured ? "1 / -1" : undefined,
+        minWidth: project.featured ? undefined : "280px",
       }}
     >
       {/* Coloured top accent bar */}
@@ -822,16 +822,12 @@ export default function WorkSection() {
           </motion.p>
 
           {/*
-           * Card grid — explicit 2-column layout on desktop.
-           * Featured cards use gridColumn: "1 / -1" to span both columns.
-           * No gridRow span is used, which prevents auto-placement gaps.
+           * Card grid — responsive: 1-column on mobile, 2-column on desktop.
+           * Featured cards span both columns on desktop.
+           * Non-featured cards have a minimum width to prevent being too thin.
            */}
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "1.25rem",
-            }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-5"
           >
             {projects.map((project, i) => (
               <WorkCard
