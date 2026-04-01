@@ -253,7 +253,7 @@ function GalleryModal({ interests, onClose }: { interests: Interest[]; onClose: 
         style={{ position: "fixed", inset: "2rem", background: t.panelBg, border: `1px solid ${t.border}`, zIndex: 101, overflowY: "auto", borderRadius: "4px", padding: "2rem" }}
       >
         <button onClick={onClose}
-          style={{ position: "absolute", top: "1.5rem", right: "1.5rem", background: "none", border: `1px solid ${t.border}`, color: t.textSecondary, width: "36px", height: "36px", borderRadius: "2px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", cursor: "none", transition: "all 0.2s ease" }}
+          style={{ position: "fixed", top: "3.5rem", right: "3.5rem", background: "none", border: `1px solid ${t.border}`, color: t.textSecondary, width: "36px", height: "36px", borderRadius: "2px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", cursor: "none", transition: "all 0.2s ease", zIndex: 102 }}
           onMouseEnter={(e) => { e.currentTarget.style.color = t.mint; e.currentTarget.style.borderColor = `${t.mint}55`; }}
           onMouseLeave={(e) => { e.currentTarget.style.color = t.textSecondary; e.currentTarget.style.borderColor = t.border; }}
           aria-label="Close gallery"

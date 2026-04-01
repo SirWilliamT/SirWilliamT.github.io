@@ -384,7 +384,7 @@ function WorkPanel({
         <button
           onClick={onClose}
           style={{
-            position: "absolute",
+            position: "fixed",
             top: "1.5rem",
             right: "1.5rem",
             background: "none",
@@ -399,6 +399,7 @@ function WorkPanel({
             fontSize: "1rem",
             cursor: "none",
             transition: "all 0.2s ease",
+            zIndex: 102,
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.color = t.mint;
