@@ -97,9 +97,24 @@ const interests: Interest[] = [
     media: [
       { url: "/media/maker/cat_door_1.jpg", type: "image", caption: "Cut out windows and cat door" },
       { url: "/media/maker/cat_door_2.jpg", type: "image", caption: "Adding in millwork and decorative elements" },
-      { url: "/media/maker/cat_door_3.jpg", type: "image", caption: "Finished cat door with some decorative touches" },
-      { url: "/media/maker/cat_door_4.jpg", type: "image", caption: "Inside reveals platforms so the cats can look out the windows" },
+      { url: "/media/maker/cat_door_3.jpg", type: "image", caption: "Finished cat door with decorative touches" },
+      { url: "/media/maker/cat_door_4.jpg", type: "image", caption: "Inside view of platforms for window viewing" },
       { url: "/media/maker/cat_door_5.jpg", type: "image", caption: "A picture of the residents" },
+    ],
+  },
+  {
+    id: "int7", icon: "◈",
+    title: "Prop Building: Papier-mâché Masks",
+    description: "Masks have fascinated me since I was a child. I enjoyed making paper masks or carving them out of wood. In my late mid-to-late 20s, I got back into making masks, but took the time to research how to make them using the Venetian style of mask making. I started with regular paper, but eventually moved to using carta lana (a wool paper used by Venetian mask makers). I've sold several of my masks to collectors and to friends around the world.",
+    tags: ["Venetian Masks", "Masks", "Papier-mâché", "Prop Building", "Sculpy"],
+    color: "mint",
+    media: [
+      { url: "/media/maker/masks_1.jpg", type: "image", caption: "Anubis Mask: clay > paper > painted" },
+      { url: "/media/maker/masks_2.jpg", type: "image", caption: "Pharaoh Mask: with baked sculpy ornamentation" },
+      { url: "/media/maker/masks_3.jpg", type: "image", caption: "Liberty Mask: Commissioned piece" },
+      { url: "/media/maker/masks_4.jpg", type: "image", caption: "Art Deco Hawk Mask: Won People's Choice Award" },
+      { url: "/media/maker/masks_5.jpg", type: "image", caption: "Colombina Mask: Made for my spouse "},
+      { url: "/media/maker/masks_6.jpg", type: "image", caption: "Various masks I made on display" },
     ],
   },
 ];
