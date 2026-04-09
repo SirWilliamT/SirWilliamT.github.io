@@ -117,6 +117,24 @@ const interests: Interest[] = [
       { url: "/media/maker/masks_6.jpg", type: "image", caption: "Various masks I made on display" },
     ],
   },
+  {
+    id: "int8", icon: "⬡",
+    title: "Other Various Interests",
+    description: "Making is in my DNA, and I have a wide range of interests that all feed into each other. Everything from cooking to LEGO to puppetry informs how I approach problems and think about design. I find that exploring different mediums and disciplines keeps my creativity sharp and allows me to bring fresh perspectives to my work.",
+    tags: ["Custom Builds", "Prototyping", "Creativity", "LEGO", "Cooking", "Muppets", "3D Printing", "Woodwork"],
+    color: "violet",
+    media: [
+      { url: "/media/maker/lego_1.jpg", type: "image", caption: "One of my mindstorm creations" },
+      { url: "/media/maker/lego_2.jpg", type: "image", caption: "Custom build entry at LEGO Insider Tour contest" },
+      { url: "/media/maker/muppet_1.jpg", type: "image", caption: "From scratch and custom Whatnot Muppet" },
+      { url: "/media/maker/muppet_2.jpg", type: "image", caption: "Preparing for a kids puppet show" },
+      { url: "/media/maker/muppet_3.jpg", type: "image", caption: "Muppet performance" },
+      { url: "/media/maker/cooking_1.jpg", type: "image", caption: "Making Guiness donuts" },
+      { url: "/media/maker/props_1.jpg", type: "image", caption: "A prop I made for a D&D-themed room" },
+      { url: "/media/maker/building_1.jpg", type: "image", caption: "Replacing a deck" },
+      { url: "/media/maker/ornament_1.jpg", type: "image", caption: "Custom 2020 ornament" },
+    ],
+  },
 ];
 
 function MediaCarousel({ media, interestColor }: { media: Interest['media']; interestColor: string }) {
